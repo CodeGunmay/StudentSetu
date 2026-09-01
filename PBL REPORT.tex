@@ -1,0 +1,369 @@
+% Compile with pdfLaTeX. Place member pictures in the same folder if required.
+
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[a4paper,left=2.0cm,right=2.0cm,top=1.55cm,bottom=1.55cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{newtxtext}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{ragged2e}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{tikz}
+\usepackage{setspace}
+
+% -------------------------------------------------
+% COLOURS
+% -------------------------------------------------
+\definecolor{TitleBlue}{RGB}{61,103,154}
+
+% -------------------------------------------------
+% GENERAL SETTINGS
+% -------------------------------------------------
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\renewcommand{\arraystretch}{1.0}
+
+% The supplied document uses a clean sans-serif heading style
+% and italic serif-style explanatory text.
+\newcommand{\blueheading}[1]{%
+    {\sffamily\color{TitleBlue}\fontsize{15}{18}\selectfont #1}%
+}
+
+\newcommand{\bluebigheading}[1]{%
+    {\sffamily\bfseries\color{TitleBlue}\fontsize{16}{19}\selectfont #1}%
+}
+
+\newcommand{\instruction}[1]{%
+    {\itshape\fontsize{10.5}{12.5}\selectfont #1}%
+}
+
+\newcommand{\answerbox}[2][3.0cm]{%
+    \vspace{2pt}
+    \noindent
+    \fbox{%
+        \begin{minipage}[t][#1][t]{\dimexpr\textwidth-2\fboxsep-2\fboxrule\relax}
+            \vspace{1mm}
+            \itshape #2
+        \end{minipage}
+    }
+}
+
+% -------------------------------------------------
+% HEADER / FOOTER
+% -------------------------------------------------
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\fancyhead[L]{%
+    \sffamily\bfseries\itshape\fontsize{10.5}{12}\selectfont
+    DS with C (TCS-302) \& OOPS with C++ (TCS-307)\\
+    DSCPP-III-2026-T147
+}
+\fancyhead[R]{%
+    \sffamily\bfseries\fontsize{10.5}{12}\selectfont
+    PROJECT PROPOSAL
+}
+\fancyfoot[R]{%
+    \itshape\fontsize{10}{12}\selectfont
+    Page \thepage
+}
+\setlength{\headheight}{14pt}
+\setlength{\headsep}{23pt}
+\setlength{\footskip}{24pt}
+
+% -------------------------------------------------
+% PAGE 1
+% -------------------------------------------------
+\begin{document}
+
+\vspace*{4mm}
+
+\bluebigheading{PROJECT AND TEAM INFORMATION}
+
+\vspace{13mm}
+
+\blueheading{Project Title}
+
+\vspace{1mm}
+
+\answerbox[0.5cm]{StudentSetu: A Campus-Wide Skill Barter, Item Hand-off and Peer Tutoring Platform
+}
+
+\vspace{13mm}
+
+\blueheading{Student / Team Information}
+
+\vspace{2mm}
+
+
+% Team information table
+
+% Compact 3-member layout so all members remain on Page 1.
+
+\noindent
+
+\begin{tabularx}{\textwidth}{|>{\RaggedRight\arraybackslash}p{0.69\textwidth}|>{\RaggedRight\arraybackslash}X|}
+
+\hline
+
+\begin{minipage}[t]{\linewidth}
+
+\vspace{1.5mm}
+
+\textit{Team Name:}\\[-1mm]
+
+\textit{Team \#}
+
+\vspace{1.5mm}
+
+\end{minipage}
+
+&
+
+\begin{minipage}[t]{\linewidth}
+
+\vspace{1.5mm}
+
+\textit{GIG}
+
+\vspace{1.5mm}
+
+\end{minipage}
+
+\\
+
+\hline
+
+\begin{minipage}[t][3.25cm][t]{\linewidth}
+
+\vspace{1.5mm}
+
+\textbf{Team member 1 (Team Lead)}\\[-1mm]
+
+\textit{(Parganiha, Gunmay: 2510370542: 2510370542@geu.ac.in, picture):}
+
+\vspace{2.0cm}
+
+\end{minipage}
+
+&
+
+\begin{minipage}[t][3.25cm][t]{\linewidth}
+
+\vspace{1.5mm}
+
+\textit{Parganiha, Gunmay -- 2510370542}\\
+
+\textit{2510370542@geu.ac.in}
+
+\vspace{2mm}
+
+\includegraphics[width=3.0cm,height=1.5cm,keepaspectratio]{Passport Size Photo (1).png}
+
+\end{minipage}
+
+\\
+
+\hline
+
+\begin{minipage}[t][3.25cm][t]{\linewidth}
+
+\vspace{1.5mm}
+
+\textbf{Team member 2}\\[-1mm]
+
+\textit{(Singh Jethi, Ishwar: 2510370458: 2510370458@geu.ac.in, picture):}
+
+\vspace{2.0cm}
+
+\end{minipage}
+
+&
+
+\begin{minipage}[t][3.25cm][t]{\linewidth}
+
+\vspace{1.5mm}
+
+\textit{Singh Jethi, Ishwar -- 2510370458}\\
+
+\textit{2510370458geu.ac.in}
+
+\vspace{2mm}
+
+\includegraphics[width=3.0cm,height=1.5cm,keepaspectratio]{jethi.png}
+
+\end{minipage}
+
+\\
+
+\hline
+
+\begin{minipage}[t][3.25cm][t]{\linewidth}
+
+\vspace{1.5mm}
+
+\textbf{Team member 3}\\[-1mm]
+
+\textit{(Yadav, Gaurav: 25021088: 25021088@geu.ac.in, picture):}
+
+\vspace{2.0cm}
+
+\end{minipage}
+
+&
+
+\begin{minipage}[t][3.25cm][t]{\linewidth}
+
+\vspace{1.5mm}
+
+\textit{Yadav, Gaurav-- 25021088 }\\
+
+\textit{25021088@geu.ac.in}
+
+\vspace{2mm}
+
+\includegraphics[width=3.0cm,height=1.5cm,keepaspectratio]{gaurav.png}
+
+\end{minipage}
+
+\\
+
+\hline
+
+\end{tabularx}
+
+\newpage
+
+% -------------------------------------------------
+% PAGE 2
+% -------------------------------------------------
+
+\bluebigheading{PROPOSAL DESCRIPTION (10 pts)}
+
+\vspace{12mm}
+
+\blueheading{Motivation (1 pt)}
+
+\vspace{1mm}
+
+\answerbox[7.0cm]{At college, students already help each other out informally all the time. Someone who's strong in DSA but weak in DBMS ends up swapping help with a friend who's the opposite, and nobody pays anyone anything for it. Seniors also end up with a pile of stuff they don't need anymore after a year or two, like lab coats, drafters, old textbooks, calculators, and this stuff would actually be useful to a junior, but it usually just sits unused or gets thrown away because there's no easy way to pass it on. Right now, both of these things only happen if you already know the right person. If you don't have a friend who's good at what you're struggling with, or you don't happen to know a senior with a spare lab coat, you're just out of luck.
+
+\vspace{4mm}
+
+
+We wanted to solve this properly instead of leaving it up to luck. The problem isn't that students don't want to help each other, it's that there's no system connecting the right people across the whole college, not just inside existing friend groups. This becomes an even bigger problem for anyone new to campus, like first-years, who haven't built those connections yet. We think this is worth solving because it's something almost every student on campus has personally dealt with, and a working solution could genuinely make life easier for people in our own department, not just be some theoretical project we submit and forget.}
+
+\vspace{12mm}
+
+\blueheading{State of the Art / Current solution (1 pt)}
+
+\vspace{1mm}
+
+\answerbox[6.0cm]{Right now this problem is solved informally, through friend circles, hostel or PG WhatsApp groups, or just word of mouth. There's no dedicated system for it on our campus at all. Some general marketplace apps do exist for buying and selling secondhand stuff, like OLX or Facebook Marketplace, but these aren't built for students specifically. They don't support skill-for-skill swaps at all, since they're made for buying and selling with money, not trading help. They also don't have any campus verification, so there's no real trust layer, you're basically trusting a random stranger off the internet.
+
+\vspace{2mm}
+
+
+Peer tutoring platforms are around too, but most of them are built around paid, structured tutoring sessions with a fixed schedule, not informal student-to-student swaps where two people just help each other out for free. We looked around and couldn't find anything that combines skill bartering, free or low-cost item hand-offs, and peer tutoring into one single system built specifically for a college campus. Everything out there solves one piece of the problem at best, and none of it is made with students or campus life in mind, so students end up falling back on whatever informal method already works for them instead of using a proper platform.}
+
+\vspace{12mm}
+
+\blueheading{Project Goals and Milestones (2 pts)}
+
+\vspace{1mm}
+
+\answerbox[5.6 cm]{Our goal is a working platform where students can list skills, items, or tutoring needs and get matched with the right people automatically, instead of relying on luck or already knowing someone in their friend circle. The matching also needs to handle indirect trades, like A helps B, B helps C, and C helps A, not just clean one-to-one pairs, since in real life most trades don't line up that neatly and a lot of good matches would get missed if we only looked for direct pairs.
+
+\vspace{2mm}
+Milestones:
+
+Phase 1 - Finalize class design and core data structures (student records, listings, matching graph)
+
+Phase 2 - Build and unit-test modules separately (skill matching, item hand-off, waitlist system)
+
+Phase 2/3 - Integrate everything into one working program with file storage for persistence
+
+Phase 3 - Add the trust layer (email verification and ratings)
+
+Phase 3 - End-to-end testing and final demo.}
+
+\vspace{25mm}
+
+\blueheading{Project Approach (3 pts)}
+
+\vspace{1mm}
+
+\answerbox[9.0cm]{We're building this as one combined C++ project, using OOP for the overall structure and DSA for the actual matching logic underneath. At the top we have a base Listing class, and this gets extended into different listing types: one for skill/tutoring swaps, one for one-way item or notes listings, and one for paid services like tutoring where the price is negotiable. Each of these has its own version of the matching function, which is where polymorphism comes in. The system just calls the same function on any listing, and what actually happens depends on what type of listing it is. This way we don't have to write separate matching code for every single listing type.
+
+\vspace{2mm}
+
+For the matching part, we treat students as nodes in a graph, and the edges show ``this person can help with what that person needs.'' First we check for a direct two-way match. If that's not there, we look for longer trade chains, like A helps B, B helps C, and C helps A, using DFS to find these chains. We cap the chain length so it doesn't take forever to run once there are a lot of students on the platform. For item and notes listings, we use a hash table so searching by category is quick, and a queue to handle waitlists properly when more than one person wants the same item.
+
+\vspace{2mm}
+
+We're also adding a basic trust layer: college email verification when signing up, and both people have to confirm before a trade is marked as done. This way the rating system actually means something and people can't fake it. All the data gets saved to files so listings and match history don't disappear every time the program is closed. So basically the whole project has two sides: an OOP side that handles listings and users, and a DSA side underneath that actually does the matching.}
+
+\newpage
+
+% -------------------------------------------------
+% PAGE 3
+% -------------------------------------------------
+
+\blueheading{System Architecture (High Level Diagram)(2 pts)}
+
+\vspace{1mm}
+
+\answerbox[15.0cm]{
+\begin{center}
+\includegraphics[
+    width=\textwidth,
+    height=15.0cm,
+    keepaspectratio
+]{diagram.png}
+\end{center}
+}
+
+\vspace{12mm}
+
+\blueheading{Project Outcome / Deliverables (1 pts)}
+
+\vspace{1mm}
+
+\answerbox[5.5cm]{By the end of this project, we'll have a working C++ application called StudentSetu, where a student can make an account, list a skill they can teach, an item they want to give away, or a tutoring request, and get matched with other students automatically. This can be a direct match, or a multi-person trade chain if a direct one isn't available. Along with the app itself, we'll have the working source code, proper documentation of the class design and data structures used, and a clear explanation of how the matching engine works underneath.
+
+\vspace{2mm}
+
+We also plan to show a working demo where real matches actually happen, including at least one case where the chain matching kicks in instead of a simple direct match, so it's clear the DFS based matching is actually working and not just the basic case. Along with the demo, we'll submit this proposal document and our final project report covering the design decisions, the testing we did, and the results we got. Basically, by the end we want a project that isn't just theoretical on paper, but something that actually runs, actually finds matches correctly, and could genuinely be used by students on our own campus if it were deployed.}
+
+\vspace{30mm}
+
+\blueheading{Assumptions}
+\vspace{2.5mm}
+
+\answerbox[2.5cm]{We're assuming that a decent number of students actually use the platform, since the matching system depends on having enough listings to work with. If very few people sign up, there won't be much to match against, and the system won't really show what it can do. We're also assuming that the actual physical hand-off, like meeting up to exchange an item or starting a tutoring session in person, happens outside the app. The software isn't managing or tracking that part, it's only responsible for finding the match and confirming it.}
+
+\vspace{12mm}
+
+\blueheading{References}
+
+\vspace{1mm}
+
+\answerbox[5.0cm]{• Roth, A. E., Sönmez, T., & Ünver, M. U. (2004). Kidney Exchange. NBER Working Paper No. 10002. https://www.nber.org/system/files/working_papers/w10002/w10002.pdf
+
+\vspace{3mm}
+• Abraham, D. J., Blum, A., & Sandholm, T. (2007). Clearing Algorithms for Barter Exchange Markets: Enabling Nationwide Kidney Exchanges. Proceedings of the 8th ACM Conference on Electronic Commerce (EC '07). https://arxiv.org/pdf/1605.08863
+
+\vspace{3mm}
+• Cormen, T. H., Leiserson, C. E., Rivest, R. L., & Stein, C. Introduction to Algorithms. MIT Press.
+
+\vspace{3mm}
+• Zeng, X., Zhou, Y., & Chen, X. (2021). Study on the System Design of Campus Resource Sharing Platform. E3S Web of Conferences, Vol. 235. https://doi.org/10.1051/e3sconf/202123502038}
+
+\end{document}
+``
