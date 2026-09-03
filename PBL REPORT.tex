@@ -265,12 +265,13 @@ We wanted to solve this properly instead of leaving it up to luck. The problem i
 
 \vspace{1mm}
 
-\answerbox[6.0cm]{Right now this problem is solved informally, through friend circles, hostel or PG WhatsApp groups, or just word of mouth. There's no dedicated system for it on our campus at all. Some general marketplace apps do exist for buying and selling secondhand stuff, like OLX or Facebook Marketplace, but these aren't built for students specifically. They don't support skill-for-skill swaps at all, since they're made for buying and selling with money, not trading help. They also don't have any campus verification, so there's no real trust layer, you're basically trusting a random stranger off the internet.
+\answerbox[6.0cm]{There is no dedicated system for it on our campus. Some marketplace apps exist for buying and selling second hand products like OLX,Facebook marketplace,but they are not built for students and they are not built for swapping purpose , they are built for money changing purpose,so skill for skill does not fit into that situation no matter how we will use it. there is also no campus verification anywhere in these apps which means you are trusting some random person of the internet, not exactly comfortable when you are trading with someone you will actually meet up with.
+
 
 \vspace{2mm}
 
 
-Peer tutoring platforms are around too, but most of them are built around paid, structured tutoring sessions with a fixed schedule, not informal student-to-student swaps where two people just help each other out for free. We looked around and couldn't find anything that combines skill bartering, free or low-cost item hand-offs, and peer tutoring into one single system built specifically for a college campus. Everything out there solves one piece of the problem at best, and none of it is made with students or campus life in mind, so students end up falling back on whatever informal method already works for them instead of using a proper platform.}
+Peer tutoring platforms exist but are also mostly paid and scheduled, not students just helping each other for free on their own time. we looked around for a bit and honestly,we were not able to find one thing that puts skill bartering, item handoff and tutoring together for a college campus all in one place specifically, everything solves maybe one part, none of them feels like it was actually made for student problems in life so people just keep doing what already exists which is asking around in the friend circle.}
 
 \vspace{12mm}
 
@@ -278,7 +279,7 @@ Peer tutoring platforms are around too, but most of them are built around paid, 
 
 \vspace{1mm}
 
-\answerbox[5.6 cm]{Our goal is a working platform where students can list skills, items, or tutoring needs and get matched with the right people automatically, instead of relying on luck or already knowing someone in their friend circle. The matching also needs to handle indirect trades, like A helps B, B helps C, and C helps A, not just clean one-to-one pairs, since in real life most trades don't line up that neatly and a lot of good matches would get missed if we only looked for direct pairs.
+\answerbox[5.6 cm]{Our goal is a platform where students can list what they can offer, what they need, or want to give away, and will get matched automatically instead of totally depending on luck or already knowing the right person around them. but it cannot only do direct matches, real trades do not usually work out that easily so we need the system to catch indirect chains also, that is A helping B, B helping C, looping back to A, otherwise a lot of good matches will just get missed.
 
 \vspace{2mm}
 Milestones:
@@ -299,11 +300,11 @@ Phase 3 - End-to-end testing and final demo.}
 
 \vspace{1mm}
 
-\answerbox[9.0cm]{We're building this as one combined C++ project, using OOP for the overall structure and DSA for the actual matching logic underneath. At the top we have a base Listing class, and this gets extended into different listing types: one for skill/tutoring swaps, one for one-way item or notes listings, and one for paid services like tutoring where the price is negotiable. Each of these has its own version of the matching function, which is where polymorphism comes in. The system just calls the same function on any listing, and what actually happens depends on what type of listing it is. This way we don't have to write separate matching code for every single listing type.
+\answerbox[9.0cm]{We're building this as one combined C++ project, using OOP for the overall structure and DSA for the actual matching logic underneath. At the top we have a base Listing class, and this gets extended into different listing types: one for skill/tutoring swaps, one for one-way item or notes listings, and one for paid services like tutoring where the price is negotiable. Each type of listing has its own version of matching function, that is the polymorphism part, the system calls the same function no matter what and depending on the listing type different things happen below it, we don't have to code separate matching logic everywhere which will get messy.
 
 \vspace{2mm}
 
-For the matching part, we treat students as nodes in a graph, and the edges show ``this person can help with what that person needs.'' First we check for a direct two-way match. If that's not there, we look for longer trade chains, like A helps B, B helps C, and C helps A, using DFS to find these chains. We cap the chain length so it doesn't take forever to run once there are a lot of students on the platform. For item and notes listings, we use a hash table so searching by category is quick, and a queue to handle waitlists properly when more than one person wants the same item.
+For the matching, students become nodes in a graph and edges represent who can help whom. direct two way matches get checked first, that's the easy case, if there is no direct match we go looking for longer chains, A to B to C then back to A, using depth first search. chain length gets capped because if it did not the search will run way too long once the platform will have a decent number of students on it. item and notes listing works differently, a hash table will handle category search since that needs to be fast, and there is a queue for waitlist so it will be fair when two or three people want the exact same thing.
 
 \vspace{2mm}
 
@@ -335,11 +336,11 @@ We're also adding a basic trust layer: college email verification when signing u
 
 \vspace{1mm}
 
-\answerbox[5.5cm]{By the end of this project, we'll have a working C++ application called StudentSetu, where a student can make an account, list a skill they can teach, an item they want to give away, or a tutoring request, and get matched with other students automatically. This can be a direct match, or a multi-person trade chain if a direct one isn't available. Along with the app itself, we'll have the working source code, proper documentation of the class design and data structures used, and a clear explanation of how the matching engine works underneath.
+\answerbox[6.4cm]{By the end of this project, we'll have a working C++ application called StudentSetu, where a student can make an account, list a skill they can teach, an item they want to give away, or a tutoring request, and get matched with other students automatically. It can be a direct match, or could end up being a multi person chain if there is no direct one available, either way the system should be able to catch it. along with the actual app we are planning to hand in the source code, documentation on the class design and data structures, and something explaining how the matching actually works under the hood, not just what it does but also why it is built that way.
 
 \vspace{2mm}
 
-We also plan to show a working demo where real matches actually happen, including at least one case where the chain matching kicks in instead of a simple direct match, so it's clear the DFS based matching is actually working and not just the basic case. Along with the demo, we'll submit this proposal document and our final project report covering the design decisions, the testing we did, and the results we got. Basically, by the end we want a project that isn't just theoretical on paper, but something that actually runs, actually finds matches correctly, and could genuinely be used by students on our own campus if it were deployed.}
+We want to demo real matches happening, and specifically we want at least one example where the chain matching actually happens, not just the easy direct case, because otherwise how would we know the dfs part will work. along with that demo we will hand in this proposal and the final report covering all the points, what we have decided, how we tested it, and what we found. the end goal is not just something that looks good on paper, we want it to actually run, actually find matches, and if it were live on our own campus, students could use it in day to day life.}
 
 \vspace{30mm}
 
