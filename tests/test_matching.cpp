@@ -1,4 +1,5 @@
 #include "../matching/MatchingEngine.h"
+#include "../matching/algorithms.h"
 #include "../app/Data.h"
 #include "../services/Waitlist.h"
 #include <iostream>
@@ -10,6 +11,13 @@ static void check(bool condition) {
 }
 int main() {
     MatchingEngine engine;
+    check(ss_similarity("abcd", "abxy") == 0.5);
+    check(ss_search_matches("abcd", "abxy"));
+    check(!ss_search_matches("abcd", "axyy"));
+    check(ss_similarity("python", "pyhton") > 0.5);
+    check(ss_search_matches("spare calculator", "calc"));
+    check(!ss_search_matches("", "") && !ss_search_matches("book", ""));
+    check(!ss_search_matches(nullptr, "book"));
     check(cleanSkill("  C++ \t Basics \n") == "c++ basics");
     std::vector<SkillOffer> rows = {
         {10, 101, "C++", " python ", true},
@@ -60,6 +68,8 @@ int main() {
     auto found = engine.search(1, " calculator ", data);
     check(found.size() == 1 && found[0].provider == 2 && found[0].listing == 1);
     check(engine.search(1, "SpArE", data).size() == 1);
+    check(engine.search(1, "calclator", data).size() == 1);
+    check(engine.search(1, "zzzzzzzzzz", data).empty());
     check(engine.search(1, "", data).empty());
     check(engine.search(99, "math", data).empty());
     auto tutors = engine.peerTutors(1, " math ", data);

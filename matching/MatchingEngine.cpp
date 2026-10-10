@@ -91,7 +91,10 @@ std::vector<ListingMatch> MatchingEngine::search(int requester, const std::strin
     for (const auto& row : data.listings) {
         if (!row || !row->isActive() || row->getOwner() == requester ||
             !data.student(row->getOwner())) continue;
-        if (row->matches(key) || ss_contains(cleanSkill(row->getTitle()).c_str(), key.c_str()))
+        auto skill = std::dynamic_pointer_cast<SkillListing>(row);
+        if (ss_search_matches(cleanSkill(row->getCategory()).c_str(), key.c_str()) ||
+            ss_search_matches(cleanSkill(row->getTitle()).c_str(), key.c_str()) ||
+            (skill && ss_search_matches(cleanSkill(skill->getOffer()).c_str(), key.c_str())))
             result.push_back(record(requester, row));
     }
     return result;

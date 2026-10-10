@@ -16,6 +16,10 @@ int main() {
     ItemSearch search; search.build(data);
     check(search.find(" calculator ", data) == std::vector<int>({1}));
     check(search.find("book", data).empty());
+    check(search.find("calclator", data) == std::vector<int>({1}));
+    check(search.find(" CALC ", data) == std::vector<int>({1}));
+    check(search.find("", data).empty());
+    check(search.find("zzzzzzzzzz", data).empty());
     Waitlist wait;
     check(!wait.join(1, 1, data));
     check(!wait.join(99, 2, data));

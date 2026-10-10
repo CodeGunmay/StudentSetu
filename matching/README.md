@@ -10,7 +10,16 @@ with the next participant's listing, including the closing edge. Inactive offers
 are excluded. One active skill swap per student is required, as in the console.
 IDs need not be consecutive. Search order is deterministic by student ID.
 
-`search` returns active listings by normalized category/skill or title substring.
+`search` and the console item search accept normalized category/skill or title
+substrings, plus fuzzy matches at **50% similarity or higher**, including exactly
+50%. Similarity is `1 - Levenshtein distance / max(text length, query length)`.
+The C implementation counts insertions, deletions, and substitutions. Empty
+queries return no results. Exact/substring matching remains supported so short
+queries such as `calc` still find `calculator`. Case and whitespace are normalized
+by the C++ caller. This is byte-based text matching for the current English data.
+Fuzzy search does not change barter graph edges or paid-service budget filtering.
+String length, equality, substring search, and edit distance are implemented
+manually in `algorithms.c`; the module does not call `strcmp`, `strstr`, or `strlen`.
 `peerTutors` finds skill providers without requiring reciprocal barter; these are
 candidate providers, not confirmed free sessions. `paidServices` filters by exact
 normalized category and budget, sorted by price and listing ID. Neither API books
