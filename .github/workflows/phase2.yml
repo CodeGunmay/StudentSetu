@@ -1,0 +1,33 @@
+name: Phase 2 combined project
+on:
+  push:
+    branches: [feature/gunmay-matching]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  combined-project:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build C algorithms and all C++ modules
+        run: |
+          mkdir -p build
+          gcc -std=c11 -Wall -Wextra -Werror -c matching/algorithms.c -o build/algorithms.o
+          COMMON="matching/MatchingEngine.cpp matching/Graph.cpp services/ItemSearch.cpp services/Waitlist.cpp services/FileManager.cpp build/algorithms.o"
+          g++ -std=c++17 -Wall -Wextra -Werror tests/test_matching.cpp $COMMON -o build/test_matching
+          g++ -std=c++17 -Wall -Wextra -Werror tests/test_services.cpp $COMMON -o build/test_services
+          g++ -std=c++17 -Wall -Wextra -Werror main.cpp app/Application.cpp $COMMON -o build/studentsetu
+      - name: Run matching and service tests
+        run: |
+          ./build/test_matching
+          ./build/test_services
+      - name: Verify console matching and fuzzy search
+        run: |
+          printf '13\nYES\n5\n1\n5\n4\n6\ncalclator\n0\n' | ./build/studentsetu > build/demo.txt
+          cat build/demo.txt
+          grep -q 'Exchange cycle' build/demo.txt
+          grep -q 'Gunmay receives from Ishwar using listing 2' build/demo.txt
+          grep -q 'Direct exchange' build/demo.txt
+          grep -q 'Spare calculator' build/demo.txt
+          if grep -q 'Error:' build/demo.txt; then exit 1; fi
