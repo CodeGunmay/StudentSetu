@@ -1,0 +1,32 @@
+name: Build and test StudentSetu
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build C module and console app
+        run: |
+          mkdir -p build
+          for f in matching/text matching/graph matching/sort services/hashtable services/queue; do
+            gcc -std=c11 -Wall -Wextra -Werror -c $f.c -o build/$(basename $f).o
+          done
+          g++ -std=c++17 -Wall -Wextra -Werror main.cpp build/*.o -o build/studentsetu
+      - name: Run tests
+        run: |
+          gcc -std=c11 -Wall matching/text.c matching/graph.c matching/sort.c tests/test_matching.c -o build/test_matching
+          gcc -std=c11 -Wall matching/text.c services/hashtable.c services/queue.c tests/test_services.c -o build/test_services
+          for t in test_app test_storage test_matcher; do
+            g++ -std=c++17 -Wall -Wextra -Werror tests/$t.cpp build/*.o -o build/$t
+          done
+          for t in test_matching test_services test_app test_storage test_matcher; do ./build/$t; done
+      - name: Demo run (exchange circle and typo search)
+        run: |
+          printf '3\nyes\n2\ngunmay@geu.ac.in\n1234\n2\n1\npython\n0\n0\n1\n2\ncalclator\n0\n0\n0\n0\n0\n0\n' | ./build/studentsetu > build/demo.txt
+          grep -q "Gunmay learns Python from Ishwar" build/demo.txt
+          grep -q "Spare calculator" build/demo.txt

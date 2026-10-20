@@ -1,7 +1,8 @@
-#include "app/Application.h"
+#include "app/App.h"
 
-// Start the console application; it owns the shared session.
 int main() {
-    Application app;
+    App app("studentsetu.txt");
     app.run();
+    cout << "Bye!\n";
+    return 0;
 }

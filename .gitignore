@@ -1,0 +1,7 @@
+build/
+*.exe
+*.o
+studentsetu.txt
+damaged_*.txt
+test_save.txt
+test_bad.txt
