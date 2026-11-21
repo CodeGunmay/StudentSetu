@@ -1,3 +1,4 @@
+// Defines the shared StudentSetu module and its responsibilities.
 #ifndef WAITLIST_H
 #define WAITLIST_H
 

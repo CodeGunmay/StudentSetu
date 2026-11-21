@@ -1,3 +1,4 @@
+// Defines the shared StudentSetu module and its responsibilities.
 #ifndef ITEMSEARCH_H
 #define ITEMSEARCH_H
 
