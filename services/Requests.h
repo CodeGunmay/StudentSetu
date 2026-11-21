@@ -1,3 +1,4 @@
+// Defines the shared StudentSetu module and its responsibilities.
 #ifndef REQUESTS_H
 #define REQUESTS_H
 

@@ -1,3 +1,4 @@
+// Implements the original StudentSetu algorithm and data operations.
 #include <stdlib.h>
 #include "services.h"
 #include "../matching/matching.h"

@@ -1,3 +1,4 @@
+// Defines the shared StudentSetu module and its responsibilities.
 #ifndef SKILLINDEX_H
 #define SKILLINDEX_H
 

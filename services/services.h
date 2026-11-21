@@ -1,3 +1,4 @@
+// Defines the shared StudentSetu module and its responsibilities.
 #ifndef SERVICES_H
 #define SERVICES_H
 

@@ -1,3 +1,4 @@
+// Implements the StudentSetu application and integration logic.
 #include <iostream>
 #include <cstdio>
 #include "../app/Store.h"
