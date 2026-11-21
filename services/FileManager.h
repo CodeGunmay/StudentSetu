@@ -1,3 +1,4 @@
+// Defines the shared StudentSetu module and its responsibilities.
 #ifndef FILEMANAGER_H
 #define FILEMANAGER_H
 
