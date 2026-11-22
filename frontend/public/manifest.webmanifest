@@ -1,0 +1,19 @@
+{
+  "name": "StudentSetu",
+  "short_name": "Setu",
+  "description": "Swap skills, find peer tutors and pass on your stuff on campus.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F8FAFC",
+  "theme_color": "#4F46E5",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

@@ -1,0 +1,145 @@
+/* Styles the StudentSetu frontend screens and components. */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+  html.dark {
+    color-scheme: dark;
+  }
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+  html,
+  body {
+    height: 100%;
+  }
+  body {
+    @apply bg-slate-100 font-sans text-slate-900 antialiased;
+    overscroll-behavior-y: none;
+  }
+  /* Visible focus for keyboard users only */
+  :focus-visible {
+    @apply outline-none ring-2 ring-brand-500 ring-offset-2 ring-offset-white;
+  }
+  .dark :focus-visible {
+    @apply ring-offset-slate-900;
+  }
+  button,
+  a {
+    touch-action: manipulation;
+  }
+  input,
+  select,
+  textarea {
+    @apply text-[15px];
+  }
+  /* Native select on iOS should not zoom the app */
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+}
+
+@layer components {
+  .card {
+    @apply rounded-2xl bg-white shadow-card dark:bg-slate-900 dark:shadow-none dark:ring-1 dark:ring-slate-800;
+  }
+  .pad {
+    @apply p-4;
+  }
+  .label {
+    @apply mb-1.5 block text-[13px] font-semibold text-slate-700 dark:text-slate-200;
+  }
+  .hint {
+    @apply mt-1.5 text-[12px] leading-snug text-slate-500 dark:text-slate-400;
+  }
+  .field {
+    @apply w-full rounded-xl border border-slate-200 bg-white px-3.5 py-3 font-medium text-slate-900
+      placeholder:font-normal placeholder:text-slate-400 transition
+      focus:border-brand-500 focus:ring-4 focus:ring-brand-500/10
+      dark:border-slate-700 dark:bg-slate-950/40 dark:text-white dark:placeholder:text-slate-500;
+  }
+  .field-error {
+    @apply border-rose-400 focus:border-rose-500 focus:ring-rose-500/10 dark:border-rose-500/60;
+  }
+  .hairline {
+    @apply border-slate-200 dark:border-slate-800;
+  }
+  .muted {
+    @apply text-slate-500 dark:text-slate-400;
+  }
+  .screen-pad {
+    @apply px-4;
+  }
+  /* scroll containers hide their scrollbar for an app-like feel */
+  .no-bar {
+    scrollbar-width: none;
+  }
+  .no-bar::-webkit-scrollbar {
+    display: none;
+  }
+  .snap-x-row {
+    scroll-snap-type: x mandatory;
+  }
+  .snap-start-item {
+    scroll-snap-align: start;
+  }
+}
+
+/* Phone shell ------------------------------------------------------------ */
+.app-root {
+  height: 100dvh;
+}
+@media (min-width: 780px) and (min-height: 780px) {
+  .app-root {
+    height: 100vh;
+  }
+}
+
+.phone-screen {
+  scrollbar-width: none;
+}
+.phone-screen::-webkit-scrollbar {
+  display: none;
+}
+
+/* Range inputs (price slider) -------------------------------------------- */
+.range-input {
+  @apply pointer-events-none absolute inset-x-0 top-0 h-8 w-full appearance-none bg-transparent;
+}
+.range-input::-webkit-slider-thumb {
+  @apply pointer-events-auto h-6 w-6 appearance-none cursor-grab rounded-full border-2 border-brand-600 bg-white shadow-md;
+  margin-top: -10px;
+}
+.range-input::-moz-range-thumb {
+  @apply pointer-events-auto h-6 w-6 cursor-grab rounded-full border-2 border-brand-600 bg-white shadow-md;
+  border-width: 2px;
+}
+.range-input::-webkit-slider-runnable-track {
+  @apply h-6 bg-transparent;
+}
+.range-input::-moz-range-track {
+  @apply h-6 bg-transparent;
+}
+
+/* arrow flow along the exchange-circle arcs (used via inline style) */
+@keyframes flow-dash {
+  to {
+    stroke-dashoffset: -30;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "name": "studentsetu",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0 --port 5173",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0 --port 4173",
+    "test": "node scripts/test-api.mjs && node scripts/test-contract.mjs && node scripts/test-sw.mjs",
+    "test:mock": "node scripts/test-api.mjs",
+    "test:contract": "node scripts/test-contract.mjs",
+    "test:sw": "node scripts/test-sw.mjs",
+    "test:ui": "node scripts/run.mjs scripts/smoke.mjs",
+    "test:all": "npm test && npm run test:ui && npm run test:session",
+    "test:live": "node scripts/run.mjs scripts/test-live.mjs",
+    "shots": "node scripts/shoot.mjs",
+    "test:session": "node scripts/run.mjs scripts/test-session.mjs"
+  },
+  "dependencies": {
+    "lucide-react": "^0.454.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.3",
+    "autoprefixer": "^10.4.20",
+    "jsdom": "^25.0.1",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.14",
+    "vite": "^5.4.10"
+  },
+  "engines": {
+    "node": ">=18.19.0"
+  }
+}

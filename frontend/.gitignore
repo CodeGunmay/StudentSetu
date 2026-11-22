@@ -1,0 +1,12 @@
+node_modules/
+dist/
+shots/
+.env
+*.local
+*.log
+.DS_Store
+
+# local build-time config (.env.example is the template)
+.env
+.env.local
+.env.*.local
