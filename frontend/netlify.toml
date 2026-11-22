@@ -1,0 +1,47 @@
+# Netlify project settings — only used when you deploy this repo (Build & deploy),
+# not when you drag-and-drop the exported dist/ zip.
+#
+# THE C++ SERVER IS NOT HOSTED YET, so this project deploys the DEMO build:
+# VITE_USE_MOCK = "true" means the bundle runs on the in-memory campus and calls no
+# API at all. It is a preview of the UI — useful for review links and deploy
+# previews, useless as a product for students, because nothing is shared and
+# nothing survives a reload.
+#
+# To deploy the real thing: host the C++ server on an https origin, put that address
+# in VITE_API_BASE below, set VITE_USE_MOCK = "false", and rebuild. Until both are
+# done the guard in vite.config.js refuses a real-mode build on Netlify, so a
+# bundle can never go out calling a placeholder. Hosting dist/ beside the API
+# yourself (same origin, empty base) is the other route — DEPLOY.md §2.
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+  # demo build until the C++ API has an origin — see the note at the top of this file
+  VITE_USE_MOCK = "true"
+
+  # PLACEHOLDER, not a real address, and unused while the app builds in mock mode.
+  # Replace it together with VITE_USE_MOCK above; any value still containing
+  # "YOUR-API-HOST" is treated as unset and fails a real-mode build.
+  VITE_API_BASE = "https://YOUR-API-HOST"
+
+  # no demo hints of any kind in a deployed build — not even in the demo build
+  # above: the dev OTP prefill and the demo password hint are dev-server only. Both
+  # names are pinned off, because the app reads VITE_DEMO_HINTS and
+  # VITE_SHOW_DEV_OTP is the API team's spelling for the same switch.
+  VITE_DEMO_HINTS = "false"
+  VITE_SHOW_DEV_OTP = "false"
+
+# The service worker must never come from cache, or updates would take a visit to land.
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/manifest.webmanifest"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
